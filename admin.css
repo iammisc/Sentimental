@@ -1,91 +1,45 @@
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+}
+
+.left-bar {
+  height: 60px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 1.7em;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+h2 {
+  font-size: 1.2em;
+  padding: 0;
+  padding-left: 2em;
+  color: gray;
+  font-weight: normal;
+}
+
+.left-bar {
+  width: 20%;
+  max-width: 300px;
+  float: left;
+}
+
+.left-bar label {
+    display: block;
+    clear: both;
+}
+
+.left-bar .control {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.map-canvas iframe, .map-canvas object, .map-canvas embed {
+    width: 80%;
 }
 
 .map-canvas {
-    margin-bottom: 5px;
-}
-
-.code-flow {
-    word-break: break-all;
-    white-space: pre-wrap;
-    font-family: monospace;
-}
-
-.expert-buttons button {
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-
-.disappearing:empty {
-    display: none;
-}
-
-.results-table {
-    background: white;
-}
-
-.inspector-table td,th {
-    width: 25%;
-}
-
-.inspector-popover {
-    display: block;
-    position: static;
-    margin: 0px;
-    margin-bottom: 20px;
-    height: 130px;
-}
-
-td.score-vector-td {
-    padding: 0px;
-    width: 75%;
-    vertical-align: middle;
-}
-
-.debug-result {
-
-}
-
-.debug-result .lead {
-    color: gray;
-}
-
-.reason {
-    word-break: break-all;
-}
-
-.bar-text {
-    margin-left: 5px;
-}
-
-.score-vis-table {
-    height: 175px;
-    width: 100%;
-}
-
-.score-vis-table td {
-    border: 0px;
-}
-
-td.score-slice {
-    padding: 0px;
-    /* This makes the slice be at least 1px wide. 0 makes it always collapse. */
-    padding-right: 1px;
-}
-
-.overview-error {
-    color: #b94a48;
-}
-
-.flavor-image {
-    position: fixed;
-    z-index: -1;
-    right: 25px;
-    bottom: 0px;
-}
-
-th.result-list-header {
-    font-weight: normal;
 }

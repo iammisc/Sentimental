@@ -1,6 +1,6 @@
 // JS specifically for the query page.
 
-sentimentalApp.controller('QueryUIController', function QueryUIController($scope, $location) {
+sentimentalApp.controller('MapUIController', function MapUIController($scope, $location) {
 	// Controller that manages linking the map and URL arguments to the
 	// current query. It has no querying logic itself. That is left up to
 	// QueryController which is also
