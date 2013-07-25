@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <title>Hackathon 11.0 | Sentiment Analysis</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="admin.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
   <script src="https://datejs.googlecode.com/svn/trunk/build/date.js"></script>
@@ -18,25 +20,27 @@
     <div class="left-bar">
       <h1> Sentiment Analysis</h1>
       <h2>Hackathon 11.0</h2>
-
       <div class="control">
-        <label class="control-label" for="emotion1">Emotion 1</label>
-        <input class="input-block-level" type="text" name="emotion1" ng-model="watched.dim1"/>
+        <label class="control-label" for="emotion1">Pleasantness</label>
+        <div class="slider" id="pleasantness" ng-model="watched.pleasantness"></div>
       </div>
       <div class="control">
-        <label class="control-label">Emotion 2</label>
-        <input class="input-block-level" type="text" ng-model="watched.dim2">
+        <label class="control-label">Attention</label>
+        <div class="slider" id="attention" ng-model="watched.attention"></div>
       </div>
       <div class="control">
-        <label class="control-label">Emotion 3</label>
-        <input class="input-block-level" type="text" ng-model="watched.dim3">
+        <label class="control-label">Sensitivity</label>
+        <div class="slider" id="sensitivity" ng-model="watched.sensitivity"></div>
       </div>
       <div class="control">
-        <label class="control-label">Emotion 4</label>
-        <input class="input-block-level" type="text" ng-model="watched.dim4">
+        <label class="control-label">Aptitude</label>
+        <div class="slider" id="aptitude" ng-model="watched.aptitude"></div>
       </div>
     </div>
     <div id="map-canvas" class="map-canvas" style="height: 96vh">
     </div>
+    <script>
+      $( ".slider" ).slider();
+    </script>
   </body>
 </html>

@@ -43,3 +43,27 @@ h2 {
 
 .map-canvas {
 }
+
+.slider {
+  margin: 10px;
+}
+
+/* red */
+#pleasantness {
+  background: #ef2929;
+}
+
+/* green */
+#attention {
+  background: #8ae234;
+}
+
+/* blue */
+#sensitivity {
+  background: #729fcf;
+}
+
+/* black */
+#aptitude {
+  background: #000000;
+}
