@@ -3,44 +3,13 @@
 
 // This is the angularjs module that all things are added to. It's a namespace
 // basically.
-var bizmatchApp = angular.module('bizmatch', [], function($locationProvider) {
+var sentimentalApp = angular.module('sentimental', [], function($locationProvider) {
 	// Make angularjs accept standard URL arguments.
 	$locationProvider.html5Mode(true).hashPrefix("!");
 });
 
-
-bizmatchApp.service('BusinessMatch', function($http) {
-	// Make an angularjs object that allows querying of the BusinessMatch service.
-
-	this.doQuery = function(callback, endpoint, query) {
-		// Perform a given query.
-		//
-		// Args:
-		// callback - function(response, status)
-		// query - Query object; can provide name, location (including lnglat), phone number,
-		//     and debug
-
-		$http.get(endpoint, {
-			params: query
-		}).success(callback).error(callback);
-	};
-
-	this.queryURL = function(endpoint, query) {
-		// Return the URL for querying the BusinessMatch service.
-		//
-		// Args:
-		// query - Query object; can provide name, location, phone, num_results, relax_name, relax_location,
-		// and suggested_business_id
-
-		return endpoint + "?" + $.param(query);
-	};
-});
-
-bizmatchApp.controller('QueryController', function QueryController($scope, BusinessMatch) {
-	// Controller that manages a BusinessMatch query. It stores a model query
-	// and provides a convenient way to bind to results and errors.
-
-	$scope.loading = false;
+sentimentalApp.controller('MapController', function MapController($scope) {
+	// Controller that manages the emotion map.
 
 	// Values that are watched are stored in $scope.watch. Initilize here.
 	$scope.watched = {
@@ -54,67 +23,45 @@ bizmatchApp.controller('QueryController', function QueryController($scope, Busin
 		num_results: 1
 	};
 
-	// Our query model object.
-	$scope.query = {};
 
 	$scope.lnglat = "-122.41952431201935,37.764073094986266";
-
-	$scope.doQuery = function(endpoint) {
-		// Actually performs a query stored in the controller's model against
-		// BusinessMatch and store it in response, any errors in errorMessage,
-		// and the last BusinessMatch query URL in lastQueryURL.
-
-		$scope.loading = true;
-		$scope.response = undefined;
-		$scope.errorMessage = undefined;
-		BusinessMatch.doQuery(
-			function(response, status) {
-				if (status === 0) {
-					$scope.errorMessage = "Could not connect to BusinessMatch.";
-					$scope.response = undefined;
-				} else if (status === 500) {
-					$scope.errorMessage = "BusinessMatch unhandled error " + status + ":\n\n" + response;
-					$scope.response = undefined;
-				} else if (status !== 200) {
-					$scope.errorMessage = "BusinessMatch error " + status + ":\n\n" + response.error;
-					$scope.response = undefined;
-				} else {
-					$scope.errorMessage = null;
-					// response is automatically decoded from JSON.
-					$scope.response = response;
-				}
-				$scope.loading = false;
-			},
-			endpoint,
-			$scope.query
-		);
-
-		$scope.lastQueryURLArgs = $.param($scope.query);
-		$scope.lastQueryURL = BusinessMatch.queryURL(endpoint, $scope.query);
-	};
 });
 
 
 init_gmap = function(mapElement) {
-	// Initalizes the Google Map.
-	//
-	// Args:
-	// mapElement - DOM element to place the map in.
-	// Returns:
-	// map - The resulting Google Map.
+    // Initalizes the Google Map.
+    //
+    // Args:
+    // mapElement - DOM element to place the map in.
+    // Returns: An object with the following properties:
+    //     map - The resulting Google Map.
+    //     heatmapData - The heatmap array
 
-	var scottsHouse = new google.maps.LatLng(37.764073094986266, -122.41952431201935);
+    var scottsHouse = new google.maps.LatLng(37.764073094986266, -122.41952431201935);
 
-	// Inits the map and sets a default location.
-	var mapOptions = {
-		center: scottsHouse,
-		zoom: 14,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	map = new google.maps.Map(mapElement,
-		mapOptions);
+    // Inits the map and sets a default location.
+    var mapOptions = {
+	center: scottsHouse,
+	zoom: 14,
+	mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(mapElement,
+	         	          mapOptions);
 
-	return map;
+    var dataArray = new google.maps.MVCArray([
+        {location: new google.maps.LatLng(37.7750, -122.4174), weight: 10},
+        {location: new google.maps.LatLng(37.7752, -122.4181), weight: 10},
+        {location: new google.maps.LatLng(37.7755, -122.4186), weight: 10},
+        {location: new google.maps.LatLng(37.7751, -122.4183), weight: 10},
+        {location: new google.maps.LatLng(37.7745, -122.4175), weight: 10},
+        {location: new google.maps.LatLng(37.7748, -122.4177), weight: 10},
+        {location: new google.maps.LatLng(37.7742, -122.4188), weight: 10},
+        {location: new google.maps.LatLng(37.7747, -122.4181), weight: 10},
+    ]);
+    var heatmap = new google.maps.visualization.HeatmapLayer({data: dataArray});
+    heatmap.setMap(map);
+
+    return {map : map, heatmapData : dataArray};
 };
 
 
