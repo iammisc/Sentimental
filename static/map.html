@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hackathon 11.0 | Sentiment Analysis</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="admin.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <script src="https://datejs.googlecode.com/svn/trunk/build/date.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEA7d_xeYqQDp7R37tHgza_h9KhmCkgpI&sensor=false&libraries=visualization"></script>
+  <script src="admin.js"></script>
+  <script src="map.js"></script>
+</head>
+<body ng-app="sentimental" ng-controller="MapController">
+  <div class="container" ng-controller="MapUIController">
+    <div class="left-bar">
+      <h1> Sentiment Analysis</h1>
+      <h2>Hackathon 11.0</h2>
+
+      <div class="control">
+        <label class="control-label" for="emotion1">Emotion 1</label>
+        <input class="input-block-level" type="text" name="emotion1" ng-model="watched.dim1"/>
+      </div>
+      <div class="control">
+        <label class="control-label">Emotion 2</label>
+        <input class="input-block-level" type="text" ng-model="watched.dim2">
+      </div>
+      <div class="control">
+        <label class="control-label">Emotion 3</label>
+        <input class="input-block-level" type="text" ng-model="watched.dim3">
+      </div>
+      <div class="control">
+        <label class="control-label">Emotion 4</label>
+        <input class="input-block-level" type="text" ng-model="watched.dim4">
+      </div>
+    </div>
+    <div id="map-canvas" class="map-canvas" style="height: 96vh">
+    </div>
+  </body>
+</html>

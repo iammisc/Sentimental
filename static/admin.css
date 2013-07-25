@@ -1,0 +1,45 @@
+body {
+}
+
+.left-bar {
+  height: 60px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 1.7em;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+h2 {
+  font-size: 1.2em;
+  padding: 0;
+  padding-left: 2em;
+  color: gray;
+  font-weight: normal;
+}
+
+.left-bar {
+  width: 20%;
+  max-width: 300px;
+  float: left;
+}
+
+.left-bar label {
+    display: block;
+    clear: both;
+}
+
+.left-bar .control {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.map-canvas iframe, .map-canvas object, .map-canvas embed {
+    width: 80%;
+}
+
+.map-canvas {
+}
